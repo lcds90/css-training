@@ -28,6 +28,7 @@ section {
   height: 100%;
   width: 100%;
   background: lightgrey;
+  animation: Fade 2s ease-in-out;
 }
 
 article {
@@ -96,5 +97,17 @@ h2 {
   position: relative;
   top: 50px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+@keyframes Fade {
+  from {
+    opacity: 0;
+    transform: translateX(5%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 </style>

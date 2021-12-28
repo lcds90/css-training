@@ -1,9 +1,6 @@
 <template>
   <section>
     Bem vindo ao site de treino de CSS!
-    <NuxtLink to="/nuxt">
-      Nuxt
-    </NuxtLink>
   </section>
 </template>
 
@@ -11,3 +8,11 @@
 export default {
 }
 </script>
+
+<style>
+  section {
+    display: grid;
+    place-items: center;
+    height: 50vh;
+  }
+</style>
