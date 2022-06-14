@@ -1,15 +1,31 @@
+<script>
+
+export default {
+  data () {
+    return {
+      navlinks: [
+        { to: '/', placeholder: 'Home page' },
+        { to: '/drawing', placeholder: 'Drawing' },
+        { to: '/layout', placeholder: 'Layouts' },
+        {
+          to: '/jointjs',
+          placeholder: 'Joint JS',
+          children: [
+            { to: '/', placeholder: 'Layouts' }
+          ]
+        }
+      ]
+    }
+  }
+}
+</script>
+
 <template>
   <div class="layout">
     <header class="header">
       <nav class="nav">
-        <NuxtLink to="/">
-          Home page
-        </NuxtLink>
-        <NuxtLink to="/nuxt">
-          Nuxt
-        </NuxtLink>
-        <NuxtLink to="/nuxt">
-          Nuxt
+        <NuxtLink v-for="nav in navlinks" :key="nav.to" :to="nav.to">
+          {{ nav.placeholder }}
         </NuxtLink>
       </nav>
     </header>
@@ -17,22 +33,26 @@
       <Nuxt />
     </main>
     <footer class="footer">
-      Feito por <a href="https://lcds.vercel.app" target="_blank" rel="noopener noreferrer">
+      Feito por
+      <a
+        href="https://lcds.vercel.app"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Leonardo Santos
       </a>
     </footer>
   </div>
 </template>
 
-<style>
-
+<style lang="scss">
 * {
   margin: 0;
   padding: 0;
   outline: 0;
   box-sizing: border-box;
   overflow-x: hidden;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: sans-serif;
 }
 
 .layout {
@@ -40,7 +60,7 @@
   max-width: 100%;
   min-height: 100vh;
   display: grid;
-  grid: 0.5fr 1fr 0.1fr / 1fr;
+  grid: 20vh 70vh 10vh / 1fr;
   grid-template-areas:
     "header"
     "main"
@@ -71,12 +91,13 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 600;
-  box-shadow: 0 7px 5px rgba(0, 0, 0, 0.25);
+  box-shadow: $box-shadow;
   z-index: 2;
 }
 
 .main {
   grid-area: main;
+  overflow: hidden;
 }
 
 .footer {
@@ -103,12 +124,11 @@
 
 @media screen and (min-width: 768px) {
   .layout {
-    grid: 0.35fr 2fr 0.15fr / 1fr;
+    grid: 10vh 80vh 10vh / 1fr;
     grid-template-areas:
       "header"
       "main"
       "footer";
   }
 }
-
 </style>
